@@ -3,48 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokémon Lookup</title>
+    <title>Crypto Lookup</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<h1>Pokémon Lookup</h1>
+<h1>Crypto Lookup</h1>
 
 <div class="search">
-    <input id="pokemonId" placeholder="Enter Pokémon ID (1-151)" min="1" max="151" />
-    <button onclick="loadPokemon()">Search</button>
+    <input id="cryptoID" placeholder="Enter Crypto ID (e.g., bitcoin)" />
+    <button onclick="loadCrypto()">Search</button>
 </div>
 
 <p id="status"></p>
 
-<div id="pokemonCard" class="card hidden">
-    <img id="pokemonSprite" src="" alt="Pokemon sprite" />
-    <h2 id="pokemonName"></h2>
+<div id="cryptoCard" class="card hidden">
+    <img id="cryptoImage" src="" alt="Crypto image" />
+    <h2 id="CryptoName"></h2>
     <table>
         <tbody>
         <tr>
-            <th>ID</th>
-            <td id="pokemonID"></td>
+            <th>Current Price</th>
+            <td id="cryptoPrice"></td>
         </tr>
         <tr>
-            <th>Height</th>
-            <td id="pokemonHeight"></td>
+            <th>Market Cap</th>
+            <td id="cryptoMarketCap"></td>
         </tr>
         <tr>
-            <th>Weight</th>
-            <td id="pokemonWeight"></td>
+            <th>Market Cap Rank</th>
+            <td id="cryptoMarketCapRank"></td>
         </tr>
         <tr>
-            <th>Types</th>
-            <td id="pokemonTypes"></td>
+            <th>Symbol</th>
+            <td id="cryptoSymbol"></td>
         </tr>
-        <tr>
-            <th>Abilities</th>
-            <td id="pokemonAbilities"></td>
+        <tr style="height: 2em;">
+            <!-- Used AI to figure out that I need to add rowspan to the High Low 24 hr header -->
+            <th rowspan="2">High Low 24 hr</th>
+            <td id="cryptoHigh"></td>
+        </tr>
+        <tr style="height: 2em;">
+            <td id="cryptoLow"></td>
         </tr>
         </tbody>
     </table>
 </div>
+
 
 <script src="app.js"></script>
 </body>

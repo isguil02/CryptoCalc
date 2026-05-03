@@ -1,11 +1,11 @@
-async function loadPokemon() {
-    const id = document.getElementById("pokemonId").value;
+async function loadCrypto() {
+    const id = document.getElementById("cryptoID").value;
     const status = document.getElementById("status");
-    const card = document.getElementById("pokemonCard");
+    const card = document.getElementById("cryptoCard");
 
     // Validate input
-    if (!id || id < 1 || id > 151) {
-        status.textContent = "Please enter a valid Pokémon ID between 1 and 151.";
+    if (!id.trim()) {
+        status.textContent = "Please enter a crypto ID.";
         card.classList.add("hidden");
         return;
     }
@@ -17,16 +17,20 @@ async function loadPokemon() {
         const response = await fetch(`/${id}`);
 
         if (!response.ok) {
-            throw new Error("Pokemon not found!");
+            throw new Error("Crypto not found!");
         }
 
         const crypto = await response.json();
 
         // Populate the card
-        document.getElementById("pokemonID").textContent = crypto.id;
-        document.getElementById("pokemonSprite").src = crypto.image;
-        document.getElementById("pokemonName").textContent = crypto.name;
-        console.log(crypto.name)
+        document.getElementById("cryptoImage").src = crypto.image;
+        document.getElementById("CryptoName").textContent = crypto.name;
+        document.getElementById("cryptoPrice").textContent = crypto.current_price;
+        document.getElementById("cryptoMarketCap").textContent = crypto.market_cap;
+        document.getElementById("cryptoMarketCapRank").textContent = crypto.market_cap_rank;
+        document.getElementById("cryptoSymbol").textContent = crypto.symbol;
+        document.getElementById("cryptoHigh").textContent = crypto.high_24h;
+        document.getElementById("cryptoLow").textContent = crypto.low_24h;
 
         status.textContent = "";
         card.classList.remove("hidden");
@@ -39,8 +43,8 @@ async function loadPokemon() {
 }
 
 // Allow pressing Enter to search
-document.getElementById("pokemonId").addEventListener("keypress", (e) => {
+document.getElementById("cryptoID").addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
-        loadPokemon();
+        loadCrypto();
     }
 });
