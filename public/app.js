@@ -14,20 +14,19 @@ async function loadPokemon() {
         status.textContent = "Loading...";
         card.classList.add("hidden");
 
-        const response = await fetch(`/pokemon/${id}`);
+        const response = await fetch(`/${id}`);
 
         if (!response.ok) {
             throw new Error("Pokemon not found!");
         }
 
-        const pokemon = await response.json();
+        const crypto = await response.json();
 
         // Populate the card
-        document.getElementById("pokemonID").textContent = pokemon.id;
-        document.getElementById("pokemonSprite").src = pokemon.image;
-        document.getElementById("pokemonName").textContent = pokemon.symbol;
-        document.getElementById("pokemonName").textContent = pokemon.name;
-        
+        document.getElementById("pokemonID").textContent = crypto.id;
+        document.getElementById("pokemonSprite").src = crypto.image;
+        document.getElementById("pokemonName").textContent = crypto.name;
+        console.log(crypto.name)
 
         status.textContent = "";
         card.classList.remove("hidden");
