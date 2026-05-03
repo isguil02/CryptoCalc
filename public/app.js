@@ -1,3 +1,11 @@
+/**
+ * CryptoCalc Frontend
+ * @summary Browser script that fetches crypto data from the Express server and puts it on the page.
+ * @author Isaiah Guilliatt
+ * @date 2026-05-02
+ * @github https://github.com/isguil02/CryptoCalc
+ * @returns {Promise<void>}
+ */
 async function loadCrypto() {
     const id = document.getElementById("cryptoID").value;
     const status = document.getElementById("status");

@@ -1,9 +1,27 @@
+/**
+ * CryptoCalc Server
+ * @summary Express server proxy for CoinGecko cryptocurrency data.
+ * @author Isaiah Guilliatt
+ * @date 2026-05-02
+ * @github https://github.com/isguil02/CryptoCalc
+ * @description This server serves static frontend assets and provides a single
+ *              route that fetches cryptocurrency market data from CoinGecko.
+ */
 const express = require("express");
 const path = require("path");
 const app = express();
 
 app.use(express.static(path.join(__dirname, "public")));
 
+/**
+ * GET /:id
+ * Fetch coin data from the CoinGecko API for a given crypto ID.
+ * @param {Object} req - Express request object.
+ * @param {Object} req.params - URL route parameters.
+ * @param {string} req.params.id - The CoinGecko coin ID to request.
+ * @param {Object} res - Express response object.
+ * @returns {Promise<void>}
+ */
 app.get("/:id", async (req, res) => {
     try {
         const { id } = req.params;
@@ -23,7 +41,6 @@ app.get("/:id", async (req, res) => {
             symbol: coin.symbol,
             name: coin.name,
             image: coin.image,
-            symbol: coin.symbol,
             current_price: coin.current_price,
             market_cap: coin.market_cap,
             market_cap_rank: coin.market_cap_rank,

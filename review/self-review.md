@@ -1,0 +1,2 @@
+# Self-Review
+I think I did pretty good on this assignment at actually learning how to use things instead of just forcing things to work. I wanted to do alot more on this assimgnet but really struggled fixing my github until i went into my windows credentials and deleted git hub and put the right one in and it fixed it. I really liked this assignment and will probably contiune working on it extra over the summer.
