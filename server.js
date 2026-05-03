@@ -1,16 +1,33 @@
 const express = require("express");
+const path = require("path");
 const app = express();
 
-// Serves the public folder automatically
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
 
-app.get("/students", (req, res) => {
-    const students = [
-        { id: 1, name: "Alice Johnson", grade: "A" },
-        { id: 2, name: "Bob Smith", grade: "B" },
-        { id: 3, name: "Carol White", grade: "A" }
-    ];
-    res.json(students);
+app.get("/pokemon/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        //Used AI to figure out that i need to add IDS to url
+        const response = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${id}`);
+        console.log(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${id}`);
+        if (!response.ok) {
+            return res.status(404).json({ error: "Pokemon not found" });
+        }
+
+        const data = await response.json();
+
+        // Send back only the data we need
+        res.json({
+            id: data.id,
+            symbol: data.symbol,
+            name: data.name,
+            image: data.image,
+
+        });
+        console.log(data.id)
+    } catch (error) {
+        res.status(500).json({ error: "Server error: " + error.message });
+    }
 });
 
 app.listen(3000, () => {
