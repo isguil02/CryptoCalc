@@ -35,3 +35,6 @@ CryptoCalc is a Node.js + Express web application that fetches live cryptocurren
 AI was used to generate JS docs & Read me and then I went through and changed it a bunch
 Comments are in the code to show where it was used
 And AI was heavily used on change app.js to match index instead of individually slowly but didn't generate any new content
+
+# UI
+![UI](./CryptoLookup.png)
